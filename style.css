@@ -1,0 +1,148 @@
+body {
+    background-color: #f5f5f5;
+  }
+  .head, .shead{
+text-align: center;
+font-weight: 800;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    width: 300px;
+    margin: 20px auto;
+  } /*
+     - `display: grid`: Specifies that the container should be displayed as a grid.
+   - `grid-template-columns: repeat(3, 1fr)`: Sets the grid columns to have equal width, creating a 3-column layout.
+   - `grid-gap: 10px`: Adds a gap of 10 pixels between grid cells.
+   - `width: 300px`: Sets the width of the board container to 300 pixels.
+   - `margin: 20px auto`: Centers the board horizontally with a top and bottom margin of 20 pixels.
+  */
+  
+  .cell {
+    position: relative ;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: #fcfcfc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out;
+  }/*
+   - `position: relative`: Specifies that the cell should be positioned relative to its normal position.
+   - `width: 100px` and `height: 100px`: Sets the width and height of the cell to 100 pixels each.
+   - `border-radius: 10px`: Adds rounded corners to the cell, giving it a circular appearance.
+   - `display: flex`: Specifies that the content of the cell should be displayed as a flex container.
+   - `align-items: center` and `justify-content: center`: Centers the content (X or O) vertically and horizontally within the cell.
+   - `font-size: 40px`: Sets the font size of the content (X or O) to 40 pixels.
+   - `cursor: pointer`: Displays a pointer cursor when hovering over the cell.
+   - `background-color: #fcfcfc`: Sets the background color of the cell to a light gray.
+   - `box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1)`: Adds a box shadow to the cell, giving it a raised effect.
+   - `transition: background-color 0.3s ease-in-out`: Specifies a smooth transition effect for the background color when hovering over the cell.
+*/
+  
+  .cell.X {
+    background-color: darkorange;
+    color: #fff;
+  }/*
+    - `background-color`: Changes the background color of the cell for the corresponding player.
+   - `color`: Changes the text color inside the cell for the corresponding player.
+*/
+  
+  .cell.O {
+    background-color: #448aff;
+    color: #fff;
+  }
+  
+  .cell:before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.9);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }/*
+  `.cell:before`: This pseudo-element is used to add graphics (X or O) to the cells. The following styles are applied to it:
+   - `content: ''`: Specifies that the pseudo-element has no content.
+   - `position: absolute`: Positions the pseudo-element absolutely within the cell.
+   - `width: 80px` and `height: 80px`: Sets the width and height of the pseudo-element to 80 pixels each.
+   - `border-radius: 50%`: Makes the pseudo-element appear as a circle.
+   - `background-color: rgba(255, 255, 255, 0.9)`: Sets the background color of the pseudo-element to a semi-transparent white.
+   - `opacity: 0`: Makes the pseudo-element initially invisible.
+   - `transition: opacity 0.3s ease-in-out`: Specifies a smooth transition effect for the opacity when hovering over the cell.
+*/
+  
+  .cell:hover:before {
+    opacity: 0.2;
+  }
+  
+  .cell.X:before {
+    background-image: url('x.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .cell.O:before {
+    background-image: url('o.png');
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }/*
+  `button`: This selector targets the reset button in the game. The following styles are applied to it:
+   - `display: block`: Specifies that the button should be displayed as a block
+   element.
+   - `margin: 20px auto`: Centers the button horizontally with a top and bottom margin of 20 pixels.
+   - `padding: 10px 20px`: Sets the padding inside the button.
+   - `font-size: 16px`: Sets the font size of the button text.
+   - `background-color: #4CAF50`: Sets the background color of the button to a green shade.
+   - `color: white`: Sets the text color of the button to white.
+   - `border: none`: Removes the border around the button.
+   - `border-radius: 5px`: Adds rounded corners to the button.
+   - `cursor: pointer`: Displays a pointer cursor when hovering over the button.
+   - `transition: background-color 0.3s ease-in-out`: Specifies a smooth transition effect for the background color when hovering over the button.
+
+   */
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Media Queries */
+  @media screen and (max-width: 480px) {
+    .board {
+      width: 240px;
+      grid-gap: 8px;
+    }
+  
+    .cell {
+      width: 80px;
+      height: 80px;
+      font-size: 30px;
+    }
+  
+    .cell:before {
+      width: 60px;
+      height: 60px;
+    }
+  }
